@@ -1,0 +1,7 @@
+.header{
+    margin: 10px;
+    position: absolute;
+    top: 0px;
+    left:45rem;
+    z-index: 9999;
+}
