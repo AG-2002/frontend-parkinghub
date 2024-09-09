@@ -1,4 +1,4 @@
-import "./style/FindOut.css";
+import "../styles/FindOut.css";
 import GeocodingComponent from "../components/Map/GeocodingComponent";
 
 function FindOut() {

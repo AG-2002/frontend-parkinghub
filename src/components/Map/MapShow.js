@@ -1,4 +1,4 @@
-import parking from "../../images/Parking.png";
+import parking from "../../assets/images/Parking.png"
 import { useEffect, useState } from "react";
 import {
   MapContainer,
@@ -11,7 +11,7 @@ import { Icon } from "leaflet";
 import predefinedNearbyPlaces from "../../Services/place-api";
 
 const redIcon = new Icon({
-  iconUrl: require("../../images/placeholder_684908.png"), // path where red marker icon is located
+  iconUrl: require("../../assets/images/placeholder_684908.png"), // path where red marker icon is located
   iconSize: [40, 40],
 });
 
@@ -50,7 +50,7 @@ function MapShow({ location, setLocation }) {
   }, []);
 
   return (
-    <div className="h-screen w-screen bg-no-repeat">
+    <div className="w-screen h-screen bg-no-repeat">
       <MapContainer
         center={location}
         zoom={12}

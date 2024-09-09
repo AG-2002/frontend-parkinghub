@@ -3,10 +3,10 @@ import HomePage from "./pages/HomePage";
 import RentOut from "./pages/RentOut";
 import FindOut from "./pages/FindOut";
 import AboutUs from "./pages/AboutUs";
-import LoginForm from "./components/Forms/LoginForm";
 import RegistrationForm from "./components/Forms/RegistrationForm";
 import ResetPasswordForm from "./components/Forms/ResetPasswordForm";
 import ContactForm from "./components/Forms/ContactForm";
+import LoginForm from "./components/Forms/LoginForm";
 
 function Router() {
   return (
@@ -14,7 +14,7 @@ function Router() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutUs />} />
-        <Route path="/login" element={<LoginForm />} />
+        <Route path="/Login" element={<LoginForm />} />
         <Route path="/registration" element={<RegistrationForm />} />
         <Route path="/rentout" element={<RentOut />} />
         <Route path="/findout" element={<FindOut />} />

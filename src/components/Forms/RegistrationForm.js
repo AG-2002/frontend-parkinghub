@@ -1,7 +1,7 @@
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa";
 import Logo from "../Logo/Logo";
-import gps from "../../images/GPS navigator-bro.svg";
+import gps from "../../assets/images/GPS navigator-bro.svg";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { createUser } from "../../Services/user-api";
@@ -35,19 +35,19 @@ function RegistrationForm() {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen ">
-      <div className="border flex justify-center items-center shadow-2xl rounded-3xl h-4/5 w-3/4 ">
-        <div className="h-full w-1/2 rounded-l-3xl flex flex-col items-center ">
-          <Logo className="text-6xl relative top-9 " />
+    <div className="flex items-center justify-center h-screen ">
+      <div className="flex items-center justify-center w-3/4 border shadow-2xl rounded-3xl h-4/5 ">
+        <div className="flex flex-col items-center w-1/2 h-full rounded-l-3xl ">
+          <Logo className="relative text-6xl top-9 " />
           <img src={gps} alt="gps" className="h-5/6" />
         </div>
-        <div className="flex flex-col justify-evenly items-center h-full w-1/2 rounded-r-3xl">
+        <div className="flex flex-col items-center w-1/2 h-full justify-evenly rounded-r-3xl">
           <div>
-            <h1 className="font-semibold text-3xl">Register an account</h1>
+            <h1 className="text-3xl font-semibold">Register an account</h1>
           </div>
           <form
             onSubmit={handleSubmit}
-            className="flex flex-col justify-evenly items-center h-3/4 w-1/2 rounded-3xl"
+            className="flex flex-col items-center w-1/2 justify-evenly h-3/4 rounded-3xl"
           >
             <input
               type="text"
@@ -55,7 +55,7 @@ function RegistrationForm() {
               placeholder="Enter your name"
               onChange={handleChange}
               value={value.username}
-              className="px-4 py-3 text-xl rounded-lg w-4/5 bg-orange-100"
+              className="w-4/5 px-4 py-3 text-xl bg-orange-100 rounded-lg"
             />
             <input
               type="email"
@@ -63,7 +63,7 @@ function RegistrationForm() {
               placeholder="Email"
               onChange={handleChange}
               value={value.email}
-              className="px-4 py-3 text-xl rounded-lg w-4/5 bg-orange-100"
+              className="w-4/5 px-4 py-3 text-xl bg-orange-100 rounded-lg"
             />
 
             <input
@@ -72,7 +72,7 @@ function RegistrationForm() {
               placeholder="Password"
               onChange={handleChange}
               value={value.password}
-              className="px-4 py-3 text-xl rounded-lg w-4/5 bg-orange-100"
+              className="w-4/5 px-4 py-3 text-xl bg-orange-100 rounded-lg"
             />
             <input
               type="password"
@@ -80,24 +80,24 @@ function RegistrationForm() {
               placeholder="Confirm Password"
               onChange={handleChange}
               value={value.confirmPassword}
-              className=" px-4 py-3 text-xl rounded-lg w-4/5 bg-orange-100"
+              className="w-4/5 px-4 py-3 text-xl bg-orange-100 rounded-lg "
             />
-            <div className="flex justify-evenly w-1/2 mr-24">
+            <div className="flex w-1/2 mr-24 justify-evenly">
               <input type="checkbox" id="checkbox" name="checkbox" required />
               <label htmlFor="checkbox">Terms & Conditions</label>
             </div>
 
             <button
               type="submit"
-              className="rounded-full px-4 py-2 w-2/3 text-xl bg-orange-400"
+              className="w-2/3 px-4 py-2 text-xl bg-orange-400 rounded-full"
             >
               Register
             </button>
-            <div className=" flex justify-evenly px-4 py-2 w-2/3 ">
+            <div className="flex w-2/3 px-4 py-2  justify-evenly">
               <FcGoogle size={28} />
               <FaFacebook size={28} color="#0866ff" />
             </div>
-            <div className="underline text-orange-400">
+            <div className="text-orange-400 underline">
               <Link to="/login">
                 Already have an account? <span>Login</span>
               </Link>

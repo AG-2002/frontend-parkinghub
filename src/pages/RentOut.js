@@ -4,8 +4,8 @@ import RentOutForm from "../components/Forms/RentOutForm";
 function RentOut() {
   return (
     <div className="h-screen w-full bg-[#ffa31a] flex justify-center items-center">
-      <div className="border border-2 w-2/5 h-[80vh] p-8 flex flex-col justify-between bg-white">
-        <Logo className="text-6xl ml-auto mr-auto" />
+      <div className="border-2 w-2/5 h-[80vh] p-8 flex flex-col justify-between bg-white">
+        <Logo className="ml-auto mr-auto text-6xl" />
         <h1 className="text-2xl">Rent Out Your Parking Space</h1>
         <p className="text-balance">
           Have a vacant plot or built up space lying vacant in the short term or

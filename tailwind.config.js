@@ -3,6 +3,13 @@ module.exports = {
   content: ["./src/**/*.{html,js}"],
   theme: {
     extend: {
+      colors:{
+        'color-primary':"#ffa31a"
+      },
+      fontFamily:{
+        Roboto:["Roboto", 'sans-serif'],
+        Poppins:[ "Poppins", 'sans-serif']
+      },
       keyframes: {
         slideIn: {
           from: { transform: "translateX(-30%)" },
@@ -16,3 +23,4 @@ module.exports = {
   },
   plugins: [],
 };
+

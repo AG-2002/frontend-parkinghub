@@ -17,7 +17,7 @@ function RentOutForm() {
   };
 
   const className =
-    "border border-2 border-black p-2 text-lg focus:outline-none ";
+    "p-2 text-lg border-2 border-black focus:outline-none ";
   const classButton = "p-2 bg-[#ffa31a] w-32 shadow-md";
   return (
     <form

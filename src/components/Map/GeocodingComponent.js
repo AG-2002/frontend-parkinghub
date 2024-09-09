@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import getByAddress from "../../Api/AddressApi";
+import getByAddress from "../../Services/AddressApi";
 import MapShow from "./MapShow";
-import "./GeocodingComponent.css";
+import "../../styles/GeocodingComponent.css";
 import InputBar from "../InputBar/InputBar";
 import { IoMenu } from "react-icons/io5";
 
@@ -28,7 +28,7 @@ function GeocodingComponent() {
 
       <IoMenu
         size={50}
-        className="button bg-white border border-2 border-black hover:bg-black hover:text-white"
+        className="bg-white border-2 border-black button hover:bg-black hover:text-white"
         onClick={handleClick}
       />
 
@@ -36,11 +36,11 @@ function GeocodingComponent() {
         <div className="button h-screen w-[400px] bg-white">
           <IoMenu
             size={50}
-            className="bg-white border border-2 border-black hover:bg-black hover:text-white"
+            className="bg-white border-2 border-black hover:bg-black hover:text-white"
             onClick={handleClick}
           />
 
-          <div className="mt-10 grid gap-y-10 justify-center">
+          <div className="grid justify-center mt-10 gap-y-10">
             <InputBar
               placeholder={"Enter address..."}
               onSubmit={handleSubmit}

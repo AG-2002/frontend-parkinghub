@@ -1,13 +1,20 @@
 import { useState } from "react";
 import classNames from "classnames";
 
-function InputBar({ className, type, getValue, onSubmit, ...rest }) {
+function InputBar({ className, type = "text", getValue, onSubmit, ...rest }) {
   const [value, setValue] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    getValue(value);
-    onSubmit();
+    console.log(value);
+    if(value){
+      getValue(value);
+    }
+    
+    if(onSubmit){
+      onSubmit();
+    }
+    setValue("");
   };
 
   const handleChange = (event) => {
@@ -16,7 +23,7 @@ function InputBar({ className, type, getValue, onSubmit, ...rest }) {
 
   const finalClassNames = classNames(
     className,
-    "border border-2 border-black p-4 rounded-0 focus:outline-none text-lg"
+    "border-2 border-black py-3 px-4 rounded-0 focus:outline-none text-lg"
   );
 
   return (

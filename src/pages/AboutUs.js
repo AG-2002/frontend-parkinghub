@@ -1,5 +1,5 @@
 import NavBar from "../components/NavBar/NavBar";
-import AboutSection from "../components/Section/AboutSection/AboutSection";
+import AboutSection from "../components/MainContent/Section/AboutSection/AboutSection";
 import Footer from "../components/Footer/Footer";
 
 function AboutUs() {
