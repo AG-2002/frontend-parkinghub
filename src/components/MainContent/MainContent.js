@@ -5,11 +5,11 @@ import SectionComps from "./SectionComps/SectionComps";
 
  function MainContent() {
   return (
-    <div>
+    <main className="w-screen h-full">
       <Section />
-      <SlideBar />
-     <SectionComps /> 
-    </div>
+      {/* <SlideBar />
+     <SectionComps />  */}
+    </main>
   )
 }
 

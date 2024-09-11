@@ -6,71 +6,73 @@ import "../../styles/NavBar.css";
 import Sidebar from "./Sidebar/Sidebar";
 import { HiOutlineMenu } from "react-icons/hi";
 import { IoSearch } from "react-icons/io5";
-import { useState,} from "react";
+import { useState } from "react";
 
 function NavBar() {
-
   const [click, setClick] = useState(false);
   const [search, setSearch] = useState(false);
 
-
   return (
-      <nav className="w-screen border-b-2">
-        <div className="flex justify-between h-20 max-md:h-16">
-          <div className="relative flex items-center gap-x-4">
-            <div className="ml-2 md:hidden">
-              <HiOutlineMenu size={25} onClick={() => setClick(!click)}/>
-            </div>
-            {click && (
-              <div className="w-[290px] h-screen bg-orange-200 absolute top-0 flex flex-col items-center gap-y-6">
-              <div className="relative flex w-full h-16 border-b-2">
-                <HiOutlineMenu size={25} onClick={() => setClick(!click)} className="mt-5 ml-2"/>
+    <nav className="w-screen">
+      <div className="flex items-center justify-between w-full h-16 border-b-2 md:h-20 md:justify-evenly lg:justify-between">
+
+        <div className="relative flex items-center w-3/5 h-full justify-evenly md:w-fit md:h-3/5 lg:w-1/6 lg:h-full">
+          <div className="md:hidden">
+            <HiOutlineMenu size={25} onClick={() => setClick(!click)} />
+          </div>
+
+          {click && (
+            <div className="absolute top-0 left-0 h-screen bg-orange-200 w-60">
+
+              <div className="h-16">
+                <HiOutlineMenu size={25} onClick={() => setClick(!click)}
+                  className="relative top-4 left-5" />
               </div>
-           
-              <div className="relative flex flex-col justify-around w-full h-24">
-              <Sidebar className="" />
-            </div>   
-            </div>
-            )}
-            <div className="px-4" >
-              <Link to="/">
-                <Logo className={"text-4xl max-md:text-[20px]"} />
-              </Link>
-            </div>
-          </div>
-          <div className="py-2 max-md:hidden">
-            <InputBar
-              type={"text"}
-              placeholder={"Search location..."}
-              
-            />
-          </div>
-          
-          <div className="flex items-center mr-4 gap-x-8">
-            <div className="md:hidden">
-              <IoSearch size={25} className="" onClick={() => setSearch(!search)} />
-            </div>
-            {search && (
-              <div className="absolute h-fit w-fit right-20 top-12"> 
-            <InputBar
-              type={"text"}
-              placeholder={"Search location..."}
-              className={"w-[250px] "}
-            />
+
+              <div className="flex flex-col h-24 justify-evenly">
+                <Sidebar className="" />
+              </div>
+
             </div>
           )}
 
-            <div className="flex gap-x-2 max-md:hidden max-md:left-2 max-md:top-16 max-md:w-[200px] max-md:border max-md:border-black max-md:py-4 max-md:flex-col max-md:gap-y-4">
-              <Sidebar />
-            </div>
-            <div className="p-2 transition duration-200 ease-in-out delay-200 border-2 border-black group hover:bg-black hover:text-white">
-              <Link to="/login">
-                <FaUserAstronaut className="icon hover:group" size={25} />
-              </Link>
-            </div>
+          <div className="">
+            <Link to="/"> <Logo className={"text-lg md:text-xl lg:text-4xl"} /> </Link>
           </div>
         </div>
-      </nav>
+
+        <div className="md:w-2/6 max-md:hidden lg:w-1/5">
+          <InputBar type={"text"} placeholder={"Search location..."} className={"w-full h-12 lg:h-16"}/>
+        </div>
+
+        <div className="flex items-center w-2/6 h-full justify-evenly gap-x-6">
+          <div className="md:hidden">
+            <IoSearch
+              size={25}
+              className=""
+              onClick={() => setSearch(!search)}
+            />
+          </div>
+          {search && (
+            <div className="absolute right-24 top-12">
+              <InputBar
+                type={"text"}
+                placeholder={"Search location..."}
+                className={"w-52"}
+              />
+            </div>
+          )}
+
+          <div className="flex max-md:hidden lg:gap-x-8">
+            <Sidebar className=""/>
+          </div>
+          <div className="p-0.5 transition duration-200 ease-in-out delay-200 border-2 border-black group hover:bg-black hover:text-white lg:p-2">
+            <Link to="/login"><FaUserAstronaut className="icon hover:group" size={30} /></Link>
+          </div>
+        </div>
+
+      </div>
+    </nav>
   );
 }
 export default NavBar;

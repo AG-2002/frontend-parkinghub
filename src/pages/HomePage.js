@@ -8,7 +8,7 @@ function HomePage() {
     <div className="h-screen overflow-x-hidden">
       <NavBar /> 
       <MainContent />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

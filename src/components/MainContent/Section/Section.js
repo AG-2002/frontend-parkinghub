@@ -1,6 +1,7 @@
 import Button from "../../Button/Button";
 import Parking from "../../../assets/images/Parking.svg";
 import { useNavigate } from "react-router-dom";
+import hero from "../../../assets/Animation/hero.gif";
 
 function Section() {
   const navigate = useNavigate();
@@ -12,45 +13,52 @@ function Section() {
   };
 
   return (
-    <div className="flex justify-center w-full h-full border-2 max-md:h-auto">
-      <div className="flex justify-between border-2">
-        <div className="flex flex-col items-start justify-center gap-y-6 gap-x-6 size-[600px]">
-        
-            <div>
-              <h1 className="text-5xl font-semibold leading-tight Poppins max-md:text-2xl">
+    <section className="w-full h-full border-2 border-red-500 md:flex md:justify-center md:h-4/5 md:items-center">
+      <div className="flex flex-col w-full h-4/5 gap-y-2 md:flex-row md:w-9/12 md:h-4/5">
+        <div className="w-full md:hidden h-1/3">
+          <img src={hero} alt="Hero Animation" className="object-cover w-full h-full" />
+        </div>
+
+        <div className="flex flex-col w-full px-4 justify-evenly h-3/6 md:w-1/2 md:h-full md:justify-center md:gap-y-8">
+          <div className=" md:flex md:justify-center md:items-center h-2/6">
+            <h1 className="grid h-full text-2xl font-semibold Poppins md:text-3xl lg:text-5xl ">
+              <span className="lg:leading-tight">
                 Experience True <br />
-                <span className="transition duration-150 delay-150 text-change text-color-primary hover:text-black">
+                <span className="transition duration-150 delay-150 text-color-primary hover:text-black">
                   Smart Parking
                 </span>
                 <br /> With Parking hub
-              </h1>
-            </div>
-            <div className="">
-              <p className="text-lg font-normal max-md:text-sm">
-                We are parking experts with real-time <br />
-                slots availability
-              </p>
-            </div>
-            <div className="flex gap-4 font-semibold text-white Roboto max-md:grid">
-              <Button
-                onClick={handleClickFindOut}
-                className="w-48 transition duration-150 ease-in-out delay-100 border-0 rounded-full bg-color-primary hover:bg-black h-14 max-md:text-sm max-md:h-11 max-md:w-44"
-              >
-                FIND PARKING
-              </Button>
-              <Button
-                onClick={handleClickRentOut}
-                className="transition duration-150 ease-in-out delay-100 bg-black border-0 rounded-full hover:bg-color-primary w-60 max-md:text-sm max-md:w-52"
-              >
-                RENT OUT PARKING
-              </Button>
-            </div>
+              </span>
+            </h1>
+          </div>
+
+          <div className=" md:flex md:justify-center">
+            <p className="text-lg lg:px-4 text-pretty md:text-xl lg:w-4/6">
+              We are parking experts with real-time slots availability
+            </p>
+          </div>
+
+          <div className="flex text-white lg:py-4 Roboto gap-x-4 md:justify-center lg:gap-x-8">
+            <Button
+              onClick={handleClickFindOut}
+              className="text-sm transition duration-150 ease-in-out delay-100 border-0 rounded-full bg-color-primary hover:bg-black lg:text-lg lg:px-8 lg:py-4"
+            >
+              FIND PARKING
+            </Button>
+            <Button
+              onClick={handleClickRentOut}
+              className="text-sm transition duration-150 ease-in-out delay-100 bg-black border-0 rounded-full hover:bg-color-primary lg:text-lg lg:px-8 lg:py-4"
+            >
+              RENT OUT PARKING
+            </Button>
+          </div>
         </div>
-        <div className=" size-[600px] max-md:hidden ">
-          <img src={Parking} alt="ParkingPNG" className="object-fill" />
+
+        <div className="w-1/2 max-md:hidden md:h-full ">
+          <img src={Parking} alt="ParkingPNG" className="object-fill w-full h-full" />
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 export default Section;
