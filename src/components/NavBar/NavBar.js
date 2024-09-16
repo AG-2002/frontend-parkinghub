@@ -13,7 +13,7 @@ function NavBar() {
   const [search, setSearch] = useState(false);
 
   return (
-    <nav className="w-screen">
+    <nav className="sticky top-0 bg-white">
       <div className="flex items-center justify-between w-full h-16 border-b-2 md:h-20 md:justify-evenly lg:justify-between">
 
         <div className="relative flex items-center w-3/5 h-full justify-evenly md:w-fit md:h-3/5 lg:w-1/6 lg:h-full">

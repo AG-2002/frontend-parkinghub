@@ -1,15 +1,17 @@
 import Card from "./Card/Card";
+
 function SlideBar() {
   const cardList = [
     {
       title: "Parking Solutions",
       subTitle: "Co-working Space",
       summary: "Easy Mobility",
+    
     },
     {
       title: "Smart Parking",
       subTitle: "Educational Institutions",
-      summary: "Entry & Exit",
+      summary: "Rapid Entry & Exit",
     },
     {
       title: "Efficient Operations",
@@ -40,29 +42,29 @@ function SlideBar() {
   });
   return (
 
-    <div className="grid w-full max-md:w-auto overflow-x-hidden">
 
-          <div className="">
-            <h1 className="text-4xl w-fit font-bold text-[#ffa31a] max-md:text-lg relative left-80 p-2 max-md:left-10 ">
-              Parking Available <span className="text-black">At</span>
-            </h1>
+    <section className="w-full border-2 border-blue-500 h-4/6 md:h-4/6">
+      <div className="flex flex-col w-full h-full overflow-x-hidden justify-evenly ">
+            <div className="flex justify-center w-full ">
+              <h1 className="w-11/12 text-2xl font-semibold md:w-7/12 text-color-primary md:text-3xl lg:text-4xl lg:font-bold">
+                Parking Available <span className="text-black">At</span>
+              </h1>
+            </div>
+      
+            <div className="flex items-center justify-center w-full h-2/5 md:h-1/6">
+              <p className="w-11/12 text-lg h-11/12 text-slate-500 text-pretty md:w-7/12 ">
+                ParkingHub is the smart parking management system that lets you park
+                like a boss. Whether you’re going to a mall, a hospital, an airport
+                or anywhere else, ParkingHub has a parking spot for you.
+              </p>
+            </div>
+        <div className="flex items-center justify-center h-2/6 md:h-3/5">
+          <div className="flex overflow-y-auto md:w-3/5">
+            <div className="flex px-1 py-2 gap-x-4 ">{renderCardList}</div>
           </div>
-                
-          <div className="py-2">
-            <p className="relative left-80 p-1 w-9/12 text-lg text-slate-500 text-pretty max-md:text-xs max-md:leading-5 max-md:left-10 max-md:w-4/12">
-              ParkingHub is the smart parking management system that lets you park
-              like a boss. Whether you’re going to a mall, a hospital, an airport
-              or anywhere else, ParkingHub has a parking spot for you.
-            </p>
-          </div> 
-
-      <div className="flex justify-center items-center max-md:justify-start ">
-        <div className="flex w-3/5 overflow-y-auto max-md:w-2/5 max-md:ml-1">
-          <div className="flex ">{renderCardList}</div>
         </div>
       </div>
-
-    </div>
+    </section>
   );
 }
 

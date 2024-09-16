@@ -3,22 +3,26 @@ import { SlEnergy } from "react-icons/sl";
 
 function Card({ title, subTitle, summary }) {
   return (
-    <div className=" flex flex-col justify-between w-96 h-72 border border-black rounded-lg m-1 p-4 max-md:w-36 max-md:h-36 ">
-      <div>
-        <h3 className="text-2xl max-md:text-xs">{title}</h3>
-      </div>
-      <div>
-        <h2 className="text-4xl font-semibold max-md:text-xs">{subTitle}</h2>
+    <div className="flex flex-col w-40 px-2 py-2 border border-black rounded-lg justify-evenly h-36 md:h-64 md:w-96 md:gap-y-6">
+      <div className="">
+        <h3 className="text-xs md:ml-6 md:text-xl md:font-semibold">{title}</h3>
       </div>
 
-      <div className="flex justify-between ">
-        <div className="flex items-center text-slate-400">
-          <SlEnergy className="mr-2 max-md:size-2.5 " size={20} />
-          <p className="text-lg max-md:text-xs max-md:">{summary}</p>
+      <div>
+        <h2 className="text-xs font-semibold md:ml-6 md:text-2xl md:font-bold">{subTitle}</h2>
+      </div>
+
+      <div className="flex justify-around">
+
+        <div className="flex items-center justify-center gap-x-2 md:gap-x-4">
+          <SlEnergy className="size-2.5 md:size-7"  />
+          <p className="text-xs md:text-xl md:font-medium">{summary}</p>
         </div>
-        <div className="border border-black rounded-full p-3 max-md:p-2">
-          <BiSolidInstitution className="max-md:size-5" size={50} />
+
+        <div className="flex items-center justify-center border border-black rounded-full size-8 md:size-20">
+          <BiSolidInstitution className="size-5 md:size-12" />
         </div>
+
       </div>
     </div>
   );
