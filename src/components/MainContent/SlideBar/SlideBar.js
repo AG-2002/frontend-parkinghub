@@ -6,7 +6,6 @@ function SlideBar() {
       title: "Parking Solutions",
       subTitle: "Co-working Space",
       summary: "Easy Mobility",
-    
     },
     {
       title: "Smart Parking",
@@ -43,7 +42,7 @@ function SlideBar() {
   return (
 
 
-    <section className="w-full border-2 border-blue-500 h-4/6 md:h-4/6">
+    <section className="w-full h-[500px] md:h-[600px]">
       <div className="flex flex-col w-full h-full overflow-x-hidden justify-evenly ">
             <div className="flex justify-center w-full ">
               <h1 className="w-11/12 text-2xl font-semibold md:w-7/12 text-color-primary md:text-3xl lg:text-4xl lg:font-bold">

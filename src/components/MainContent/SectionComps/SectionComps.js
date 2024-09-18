@@ -5,7 +5,7 @@ import ImgsCardData from "./CardData/ImgsCardData";
 
 function SectionComps() {
   return (
-    <section className="w-full border-2 border-red-500 h-11/12">
+    <section className="w-full h-11/12">
       <div className="flex flex-col w-full h-full py-2 gap-y-10 justify-evenly md:items-center md:gap-y-20">
         <ImgCardData />
 
