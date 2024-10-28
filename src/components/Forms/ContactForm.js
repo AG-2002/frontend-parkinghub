@@ -52,7 +52,7 @@ function ContactForm() {
           </div>
           <form
             onSubmit={handleSubmit}
-            className="flex flex-col items-center w-1/2 border justify-evenly h-3/4 max-md:w-11/12"
+            className="flex flex-col items-center w-1/2 justify-evenly h-3/4 max-md:w-11/12"
           >
             <input
               type="text"

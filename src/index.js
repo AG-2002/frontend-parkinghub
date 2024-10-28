@@ -3,13 +3,13 @@ import ReactDom from "react-dom/client";
 import App from "./App";
 import "./styles/index.css";
 
-import { NavigationProvider } from "./Context/navigation";
+import { MapProvider } from "./context/map-context";
 
 const el = document.getElementById("root");
 const root = ReactDom.createRoot(el);
 
 root.render(
-  <NavigationProvider>
+  <MapProvider>
     <App />
-  </NavigationProvider>
+  </MapProvider>
 );

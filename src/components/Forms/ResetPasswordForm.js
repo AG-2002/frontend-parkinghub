@@ -14,8 +14,8 @@ function ResetPasswordForm() {
     <div className="flex items-center justify-center h-screen ">
       <div className="flex items-center justify-center w-3/5 shadow-2xl h-3/5 rounded-3xl">
         <div className="w-1/2 h-full overflow-hidden rounded-3xl">
-          <div className="relative z-10 bg-orange-300 rounded-full  h-60 w-60 right-16 bottom-24"></div>
-          <div className="relative w-4/5 bg-orange-300 rounded-full  h-4/5 z-999 left-24 bottom-44 backdrop-filter backdrop-blur-sm bg-opacity-80">
+          <div className="relative z-10 bg-orange-300 rounded-full h-60 w-60 right-16 bottom-24"></div>
+          <div className="relative w-4/5 bg-orange-300 rounded-full h-4/5 z-999 left-24 bottom-44 backdrop-filter backdrop-blur-sm bg-opacity-80">
             <img src={security} alt="security" className="w-full h-full" />
           </div>
           <div className="relative z-10 bg-orange-300 rounded-full h-52 w-52 right-16 bottom-64"></div>
@@ -55,3 +55,4 @@ function ResetPasswordForm() {
 }
 
 export default ResetPasswordForm;
+

@@ -12,13 +12,13 @@ function Router() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/home" element={<HomePage />} />
         <Route path="/about" element={<AboutUs />} />
-        <Route path="/Login" element={<LoginForm />} />
+        <Route path="/login" element={<LoginForm />} />
         <Route path="/registration" element={<RegistrationForm />} />
         <Route path="/rentout" element={<RentOut />} />
-        <Route path="/findout" element={<FindOut />} />
-        <Route path="/forgetpassword" element={<ResetPasswordForm />} />
+        <Route path="/" element={<FindOut />} />
+        <Route path="/reset" element={<ResetPasswordForm />} />
         <Route path="/contact" element={<ContactForm />} />
       </Routes>
     </BrowserRouter>

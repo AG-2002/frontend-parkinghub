@@ -1,24 +1,20 @@
 import { useState } from "react";
 import classNames from "classnames";
 
+
 function InputBar({ className, type = "text", getValue, onSubmit, ...rest }) {
   const [value, setValue] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(value);
-    if(value){
+    setValue(event.target[0].value);
+    if (value) {
       getValue(value);
     }
-    
-    if(onSubmit){
+    if (onSubmit) {
       onSubmit();
     }
     setValue("");
-  };
-
-  const handleChange = (event) => {
-    setValue(event.target.value);
   };
 
   const finalClassNames = classNames(
@@ -29,8 +25,6 @@ function InputBar({ className, type = "text", getValue, onSubmit, ...rest }) {
   return (
     <form onSubmit={handleSubmit}>
       <input
-        onChange={handleChange}
-        value={value}
         type={type}
         className={finalClassNames}
         placeholder={rest.placeholder}
