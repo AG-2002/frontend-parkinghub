@@ -24,11 +24,11 @@ export default function MapSearchBar({ Icon, directionIcon }) {
   return (
     <>
       <form
-        className={`flex items-center bg-white w-fit p-2 justify-around rounded-3xl drop-shadow-2xl `}
+        className={`group focus-within:outline focus-within:outline-blue-500 focus-within:outline-2 flex items-center bg-white w-fit px-3 py-1.5 justify-around rounded-3xl drop-shadow-2xl  `}
         onSubmit={handleSubmit}
       >
         {Icon && Icon}
-        <input  id="search" placeholder="search..." />
+        <input  id="search" placeholder="search..." className="h-full py-1.5 outline-none w-4/6"/>
         <button ><IoIosSearch size={25}/></button>
         {isLoading && <Loading />}
         {directionIcon}

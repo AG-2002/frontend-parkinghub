@@ -15,9 +15,9 @@ function Router() {
         <Route path="/home" element={<HomePage />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/login" element={<LoginForm />} />
-        <Route path="/registration" element={<RegistrationForm />} />
+        <Route path="/" element={<RegistrationForm />} />
         <Route path="/rentout" element={<RentOut />} />
-        <Route path="/" element={<FindOut />} />
+        <Route path="/findout" element={<FindOut />} />
         <Route path="/reset" element={<ResetPasswordForm />} />
         <Route path="/contact" element={<ContactForm />} />
       </Routes>

@@ -19,6 +19,7 @@ module.exports = {
       animation: {
         slideIn: "6s linear 4s infinite running slideIn",
       },
+ 
     },
   },
   plugins: [],

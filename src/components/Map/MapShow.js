@@ -1,5 +1,5 @@
 import parking from "../../assets/images/Parking.png";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   MapContainer,
   TileLayer,
@@ -10,8 +10,6 @@ import {
 import { Icon } from "leaflet";
 import predefinedNearbyPlaces from "../../Services/place-api";
 import RoutingMachine from "./RoutingMachine";
-import L from "leaflet";
-import ParkingCard from "./ParkingCard";
 import useMapContext from "../../hooks/use-MapContext";
 
 const parkingIcon = new Icon({
@@ -38,7 +36,7 @@ function MapShow() {
     }
   };
 
-  // the block of code render predefined location on map with red marker
+  // the block of code render predefined location on map with marker
   try {
     useEffect(() => {
       setCitiesLocation(predefinedNearbyPlaces);
@@ -47,30 +45,17 @@ function MapShow() {
     console.log(error);
   }
 
-  // Handle click on parking card
-  function handleCardClick(predefinedNearbyPlaces) {
-    if (!location) {
-      alert("User location is not available yet!");
-      return;
-    }
-    //   const waypoints = {
-    //     L.latLng(location.lat, location.lng), // User's current location
-    //     L.latLng(predefinedNearbyPlaces.lat, predefinedNearbyPlaces.lng), // Parking location from the card
-    // }
-    setWaypoints(waypoints); // Update waypoints state
-  }
+  // // Handle click on parking card
+  // function handleCardClick(predefinedNearbyPlaces) {
+  //   if (!location) {
+  //     alert("User location is not available yet!");
+  //     return;
+  //   }
+  //   setWaypoints(waypoints); // Update waypoints state
+  // }
 
   return (
     <>
-      <div className="absolute z-40 flex w-11/12 px-10 overflow-x-scroll border-2 border-red-500 gap-x-14 bottom-5">
-        {predefinedNearbyPlaces.map((location, key) => (
-          <ParkingCard
-            key={key}
-            location={location}
-            onClick={() => handleCardClick(location)}
-          />
-        ))}
-      </div>
       <MapContainer
         center={location}
         zoom={12}

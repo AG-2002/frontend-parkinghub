@@ -1,102 +1,110 @@
-import { FcGoogle } from "react-icons/fc";
-import { FaFacebook } from "react-icons/fa";
 import Logo from "../Logo/Logo";
 import gps from "../../assets/images/GPS navigator-bro.svg";
-import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { userSignupValidationSchema } from "../../utils/userValidationSchema";
 import { createUser } from "../../Services/user-api";
+import Input from "../Input";
+import Button from "../Button/Button";
+import { useState } from "react";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 function RegistrationForm() {
-  const [value, setValue] = useState({
-    username: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
+  const [showPassword, setShowPassword] = useState(false);
+
+  const {
+    register,
+    reset,
+    watch,
+    handleSubmit,
+    formState: { errors, touchedFields },
+  } = useForm({
+    resolver: yupResolver(userSignupValidationSchema),
   });
 
-  const handleChange = (e) => {
-    setValue({
-      ...value,
-      [e.target.name]: e.target.value,
-    });
-  };
+  const password = watch("password");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(value);
-    createUser(value);
-
-    setValue({
-      username: "",
-      email: "",
-      password: "",
-      confirmPassword: "",
-    });
+  const onSubmit = async (data) => {
+    console.log("Form Submitted Successfully:", data);
+    if (data) {
+      await createUser(data);
+      reset();
+      console.log("User registered successfully:", data);
+    }else{
+      console.log("something went wrong on form submission");
+    }
   };
 
   return (
     <div className="flex items-center justify-center h-screen ">
-      <div className="flex items-center justify-center w-3/4 border shadow-2xl rounded-3xl h-4/5 ">
-        <div className="flex flex-col items-center w-1/2 h-full rounded-l-3xl ">
-          <Logo className="relative text-6xl top-9 " />
-          <img src={gps} alt="gps" className="h-5/6" />
+      <div className="flex flex-col items-center justify-center w-full h-full border shadow-2xl lg:w-3/4 md:flex-row md:rounded-3xl lg:h-4/5 ">
+        <div className="flex flex-col items-center justify-center md:w-1/2 md:h-full rounded-l-3xl ">
+          <Logo className="text-4xl md:text-5xl lg:text-6xl" />
+          <img
+            src={gps}
+            alt="gps"
+            className="hidden lg:h-5/6 md:h-4/6 md:block"
+          />
         </div>
-        <div className="flex flex-col items-center w-1/2 h-full justify-evenly rounded-r-3xl">
+        <div className="flex flex-col items-center justify-center h-3/5 md:w-1/2 md:h-full gap-y-10 md:rounded-r-3xl">
           <div>
-            <h1 className="text-3xl font-semibold">Register an account</h1>
+            <h1 className="text-2xl font-semibold md:text-3xl">
+              Register an account
+            </h1>
           </div>
+
           <form
-            onSubmit={handleSubmit}
-            className="flex flex-col items-center w-1/2 justify-evenly h-3/4 rounded-3xl"
+            onSubmit={handleSubmit(onSubmit)}
+            className="flex flex-col items-center px-4 py-2 gap-y-3"
           >
-            <input
-              type="text"
+            <Input
+              error={errors}
+              isTouched={touchedFields.username}
               name="username"
               placeholder="Enter your name"
-              onChange={handleChange}
-              value={value.username}
-              className="w-4/5 px-4 py-3 text-xl bg-orange-100 rounded-lg"
+              {...register("username")}
             />
-            <input
-              type="email"
+            <Input
+              error={errors}
               name="email"
               placeholder="Email"
-              onChange={handleChange}
-              value={value.email}
-              className="w-4/5 px-4 py-3 text-xl bg-orange-100 rounded-lg"
+              {...register("email")}
+              isTouched={touchedFields.email}
             />
 
-            <input
-              type="password"
-              name="password"
-              placeholder="Password"
-              onChange={handleChange}
-              value={value.password}
-              className="w-4/5 px-4 py-3 text-xl bg-orange-100 rounded-lg"
-            />
-            <input
-              type="password"
+            <div className="relative">
+              <Input
+                type={showPassword ? "text" : "password"}
+                error={errors}
+                name="password"
+                placeholder="Password"
+                {...register("password")}
+                isTouched={touchedFields.password}
+              />
+             {password && ( <i
+                className="absolute cursor-pointer left-80 bottom-3 "
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              </i>)}
+            </div>
+
+            <Input
+              type={"password"}
+              isTouched={touchedFields.confirmPassword}
+              error={errors}
               name="confirmPassword"
               placeholder="Confirm Password"
-              onChange={handleChange}
-              value={value.confirmPassword}
-              className="w-4/5 px-4 py-3 text-xl bg-orange-100 rounded-lg "
+              {...register("confirmPassword")}
             />
-            <div className="flex w-1/2 mr-24 justify-evenly">
-              <input type="checkbox" id="checkbox" name="checkbox" required />
-              <label htmlFor="checkbox">Terms & Conditions</label>
-            </div>
 
-            <button
+            <Button
               type="submit"
-              className="w-2/3 px-4 py-2 text-xl bg-orange-400 rounded-full"
+              className="w-10/12 px-6 py-2 mt-4 text-xl bg-orange-400 border-none rounded-full md:w-9/12"
             >
               Register
-            </button>
-            <div className="flex w-2/3 px-4 py-2  justify-evenly">
-              <FcGoogle size={28} />
-              <FaFacebook size={28} color="#0866ff" />
-            </div>
+            </Button>
             <div className="text-orange-400 underline">
               <Link to="/login">
                 Already have an account? <span>Login</span>

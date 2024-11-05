@@ -1,7 +1,7 @@
 import classNames from "classnames";
 
 function Logo({ className, inverted }) {
-  const finalClassNames = classNames(className, "flex items-center");
+  const finalClassNames = classNames(className, "flex items-center ");
 
   return (
     <div className={finalClassNames}>

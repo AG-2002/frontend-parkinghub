@@ -3,7 +3,7 @@ import axios from "axios";
 export const createUser = async (value) => {
   try {
     const response = await axios.post(
-      "http://localhost:8080/api/users/",
+      "http://localhost:8000/api/users/",
       value
     );
     return response;
