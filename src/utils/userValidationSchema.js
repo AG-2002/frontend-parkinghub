@@ -13,4 +13,14 @@ import { object, string,ref} from 'yup';
         .required("Confirm Password is required"),
       });
 
-export {userSignupValidationSchema};
+      const userLoginValidationSchema = object({
+        email: string().email().required(),
+        password: string()
+        .min(8, "Password must be at least 8 characters")
+        .matches(/[0-9]/, "Password must contain a number")
+        .matches(/[@$!%*?&]/, "Password must contain a special character")
+        .required("Password is required"),
+      });
+
+
+export {userSignupValidationSchema, userLoginValidationSchema};

@@ -30,7 +30,7 @@ function RegistrationForm() {
     if (data) {
       await createUser(data);
       reset();
-      console.log("User registered successfully:", data);
+      console.log("User registered successfully:", data, "Please verify your email");
     }else{
       console.log("something went wrong on form submission");
     }
@@ -40,7 +40,7 @@ function RegistrationForm() {
     <div className="flex items-center justify-center h-screen ">
       <div className="flex flex-col items-center justify-center w-full h-full border shadow-2xl lg:w-3/4 md:flex-row md:rounded-3xl lg:h-4/5 ">
         <div className="flex flex-col items-center justify-center md:w-1/2 md:h-full rounded-l-3xl ">
-          <Logo className="text-4xl md:text-5xl lg:text-6xl" />
+          <Logo className="text-4xl border-2 md:text-5xl lg:text-6xl" />
           <img
             src={gps}
             alt="gps"

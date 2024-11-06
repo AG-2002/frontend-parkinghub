@@ -1,83 +1,109 @@
 import Logo from "../Logo/Logo";
 import blue from "../../assets/images/blue.svg";
-import { useState } from "react";
 import { Link } from "react-router-dom";
+import Input from "../Input";
+import Button from "../Button/Button";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { userLoginValidationSchema } from "../../utils/userValidationSchema";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { loginUser } from "../../Services/user-api";
 
 function LoginForm() {
-  const [value, setValue] = useState({ username: "", password: "" });
+  const [showPassword, setShowPassword] = useState(false);
 
-  const handleChange = (e) => {
-    setValue({
-      ...value,
-      [e.target.name]: e.target.value,
-    });
-  };
+  const {
+    register,
+    reset,
+    watch,
+    handleSubmit,
+    formState: { errors, touchedFields },
+  } = useForm({
+    resolver: yupResolver(userLoginValidationSchema),
+  });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(value);
-    setValue({ username: "", password: "" });
+  const password = watch("password");
+
+  const onSubmit = async(data) => {
+    console.log("login data submitted:", data);
+    if (data) {
+      await loginUser(data);
+      console.log("user was succesfully logged");
+    }else{
+      console.log("something went wrong on form submission");
+    }
+    reset();
   };
 
   return (
-    <div className="w-screen h-screen lg:flex lg:justify-center lg:items-center">
-      <div className="w-full h-full lg:h-3/5 lg:w-3/6 lg:flex lg:shadow-2xl lg:rounded-3xl ">
-        <div className="relative flex justify-center h-2/5 lg:h-full lg:w-1/2 md:bg-color-primary lg:static lg:rounded-l-3xl lg:flex-col lg:items-center lg:justify-evenly">
-          <Logo className="absolute text-xl top-4 md:text-3xl md:top-1 lg:text-5xl lg:static lg:w-5/6 lg:h-fit lg:px-10" />
+    <div className="flex items-center justify-center h-screen">
+      <div className="flex flex-col w-full h-full md:flex-row md:shadow-2xl md:rounded-3xl md:h-5/6 lg:h-3/5 lg:w-4/6 xl:w-3/6">
+        <div className="flex flex-col items-center justify-evenly md:justify-center md:bg-color-primary md:rounded-l-3xl md:w-1/2 md:h-full">
+          <Logo className="pt-6 text-3xl md:py-2 md:text-5xl"/>
           <img
             src={blue}
             alt="logo"
-            className="w-full h-full lg:w-5/6 lg:h-4/6 "
+            className="object-fill md:h-4/5"
           />
         </div>
 
-        <div className="flex flex-col items-center h-3/5 lg:h-full lg:w-1/2 lg:rounded-r-3xl justify-evenly">
-          <div className="flex flex-col items-center justify-between w-5/6 h-1/5">
-            <h1 className="text-2xl font-semibold text-amber-500 md:text-3xl lg:text-4xl">
-              Welcome
-            </h1>
-            <h1 className="text-2xl font-semibold text-blue-500 md:text-3xl lg:text-4xl">
-              User Login
+        <div className="flex flex-col items-center h-full justify-evenly md:w-1/2 md:rounded-r-3xl">
+          <div className="flex items-center h-fit">
+            <h1 className="px-2 py-2 text-3xl font-semibold text-blue-500 md:text-4xl lg:text-5xl">
+             Welcome Back
             </h1>
           </div>
           <form
-            onSubmit={handleSubmit}
-            className="flex flex-col w-5/6 justify-evenly gap-y-4 h-4/6 "
+           onSubmit={handleSubmit(onSubmit)}
+           className="flex flex-col items-center px-4 py-2 justify-evenly gap-y-3 h-3/5 md:h-4/5 lg:h-3/6 md:justify-center"
           >
-            <input
-              type="text"
-              name="username"
-              placeholder="Email or username"
-              className="bg-[#93c5fd47] placeholder:text-blue-500 rounded-lg focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 px-3 py-3 "
-              onChange={handleChange}
-              value={value.username}
+            <Input
+              error={errors}
+              name="email"
+              placeholder="Email"
+              {...register("email")}
+              isTouched={touchedFields.email}
             />
-            <input
-              type="password"
-              name="password"
-              placeholder="password"
-              className="bg-[#93c5fd47] placeholder:text-blue-500 rounded-lg focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 px-3 py-3"
-              onChange={handleChange}
-              value={value.password}
-            />
+            <div className="relative">
+              <Input
+                type={showPassword ? "text" : "password"}
+                error={errors}
+                name="password"
+                placeholder="Password"
+                {...register("password")}
+                isTouched={touchedFields.password}
+              />
+             {password && ( <i
+                className="absolute cursor-pointer left-80 bottom-3 "
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              </i>)}
+            </div>
+            <div className="w-full ml-2">
             <Link
               to="/forgetpassword"
               className="text-blue-600 visited:text-purple-600 hover:underline"
             >
               Forgot password?
             </Link>
-            <button
+            </div>
+            <Button
               type="submit"
-              className="py-3 text-white bg-blue-500 rounded-full active:bg-blue-600"
+              className="w-10/12 text-white bg-blue-500 border-none rounded-full active:bg-blue-600"
             >
-              LOG IN
-            </button>
+              Login
+            </Button>
+            <div className="flex justify-start w-full ml-4 gap-x-2 ">
+              <p>Register for an account :</p>
             <Link
-              to="/registration"
+              to="/signup"
               className="text-blue-600 visited:text-purple-600 hover:underline"
             >
-              Create account
+              Sign up
             </Link>
+            </div>
           </form>
         </div>
       </div>
