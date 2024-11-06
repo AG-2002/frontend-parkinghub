@@ -83,7 +83,7 @@ function LoginForm() {
             </div>
             <div className="w-full ml-2">
             <Link
-              to="/forgetpassword"
+              to="/reset"
               className="text-blue-600 visited:text-purple-600 hover:underline"
             >
               Forgot password?
